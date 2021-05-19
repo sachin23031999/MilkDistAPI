@@ -15,10 +15,6 @@ import com.springrest.MilkDistAPI.entities.Customer;
 @RestController
 public class MyController {
 
-//    @GetMapping("/home")
-//    public String home() {
-//        return "Hello Sachin";
-//    }
 
 		@Autowired
         private CustomerService customerService;
