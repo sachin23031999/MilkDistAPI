@@ -26,7 +26,7 @@ public class Customer {
 	@Column(length = 6)
 	private String pincode;
 
-	private String type_of_customer; //Individial/Professional
+	private String type_of_customer; // Individual/Professional
 	
 	public Customer(String user_id, String name, String mobile, String address, String pincode, String type_of_customer) {
 		super();
