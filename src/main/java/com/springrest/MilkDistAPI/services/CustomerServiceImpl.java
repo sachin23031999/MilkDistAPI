@@ -15,20 +15,12 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private CustomerDao customerDao;
 
-    List<Customer> list;
 
     public CustomerServiceImpl() {
-        list = new ArrayList<>();
-        list.add(new Customer(1,
-                "Sachin",
-                "9534157608",
-                "PATNA",
-                "848125",
-                "abc"));
     }
 
     @Override
-    public Customer getCustomer(Long id) {
+    public Customer getCustomer(String id) {
         return customerDao.getOne(id);
     }
 
@@ -39,7 +31,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer deleteCustomer(long id) {
+    public Customer deleteCustomer(String id) {
         Customer customer = customerDao.getOne(id);
         customerDao.delete(customer);
         return customer;
@@ -47,7 +39,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void addCustomer(Customer customer) {
-        customerDao.save(customer);
+            customerDao.save(customer);
     }
 
     @Override

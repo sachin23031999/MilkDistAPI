@@ -23,6 +23,11 @@ public class MyController {
 	public List<Customer> getAllCustomers() {
         return this.customerService.getAllCustomers();
 	}
+
+	@GetMapping("/customers/{user_id}")
+	public Customer getCustomer(@PathVariable String user_id) {
+		return this.customerService.getCustomer(user_id);
+	}
 	@PostMapping(path = "/customers", consumes = "application/json")
 	public List<Customer> addCustomer(@RequestBody Customer customer){
 		customerService.addCustomer(customer);
@@ -31,13 +36,13 @@ public class MyController {
 
 	@PutMapping(path = "/customers", consumes = "application/json")
 	public Customer updateCustomer(@RequestBody Customer customer) {
-		return customerService.updateCustomer(customer);
+		return this.customerService.updateCustomer(customer);
 	}
 
-	@DeleteMapping("/customers/{customer_id}")
-	public ResponseEntity<HttpStatus> deleteCustomer(@PathVariable String customer_id) {
+	@DeleteMapping("/customers/{user_id}")
+	public ResponseEntity<HttpStatus> deleteCustomer(@PathVariable String user_id) {
 		try {
-			this.customerService.deleteCustomer(Long.parseLong(customer_id));
+			this.customerService.deleteCustomer(user_id);
 			return new ResponseEntity<>(HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

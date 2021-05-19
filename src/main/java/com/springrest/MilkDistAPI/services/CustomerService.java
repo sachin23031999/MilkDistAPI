@@ -9,6 +9,6 @@ public interface CustomerService {
 	public List<Customer> getAllCustomers();
 	public void addCustomer(Customer customer);
 	public Customer updateCustomer(Customer customer);
-	public Customer getCustomer(Long id);
-	public Customer deleteCustomer(long id);
+	public Customer getCustomer(String id);
+	public Customer deleteCustomer(String id);
 }

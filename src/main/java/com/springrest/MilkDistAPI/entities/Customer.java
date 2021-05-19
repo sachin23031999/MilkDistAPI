@@ -1,20 +1,34 @@
 package com.springrest.MilkDistAPI.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 
 @Entity
+@Table(name = "customers")
 public class Customer {
 
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.AUTO)
+//	private long id;
 	@Id
-	private long user_id;
+	@Column(unique = true, length = 32)
+	private String user_id;
+
+	@Column(length = 100)
 	private String name;
+
+	@Column(length = 10)
 	private String mobile;
+
 	private String address;
+
+	@Column(length = 6)
 	private String pincode;
-	private String type_of_customer;
+
+	private String type_of_customer; //Individial/Professional
 	
-	public Customer(long user_id, String name, String mobile, String address, String pincode, String type_of_customer) {
+	public Customer(String user_id, String name, String mobile, String address, String pincode, String type_of_customer) {
 		super();
 		this.user_id = user_id;
 		this.name = name;
@@ -29,11 +43,11 @@ public class Customer {
 		// TODO Auto-generated constructor stub
 	}
 
-	public long getUser_id() {
+	public String getUser_id() {
 		return user_id;
 	}
 
-	public void setUser_id(long user_id) {
+	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
 
