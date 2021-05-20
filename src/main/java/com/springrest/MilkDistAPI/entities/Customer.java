@@ -1,17 +1,15 @@
 package com.springrest.MilkDistAPI.entities;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "customers")
 public class Customer {
 
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
-//	private long id;
 	@Id
+	@GeneratedValue
+	private long id;
+
 	@Column(unique = true, length = 32)
 	private String user_id;
 
@@ -23,13 +21,19 @@ public class Customer {
 
 	private String address;
 
+	//@OneToOne(cascade = CascadeType.ALL, mappedBy = "customer")
+	//private DistReq distReq;
+
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "dist_id")
+//	private DistReq distReq;
+
 	@Column(length = 6)
 	private String pincode;
 
 	private String type_of_customer; // Individual/Professional
-	
+
 	public Customer(String user_id, String name, String mobile, String address, String pincode, String type_of_customer) {
-		super();
 		this.user_id = user_id;
 		this.name = name;
 		this.mobile = mobile;
@@ -37,6 +41,22 @@ public class Customer {
 		this.pincode = pincode;
 		this.type_of_customer = type_of_customer;
 	}
+
+	//	public DistReq getDistReq() {
+//		return distReq;
+//	}
+//
+//	public void setDistReq(DistReq distReq) {
+//		this.distReq = distReq;
+//	}
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 
 	public Customer() {
 		super();

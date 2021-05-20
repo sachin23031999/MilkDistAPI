@@ -20,7 +20,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer getCustomer(String id) {
+    public Customer getCustomer(long id) {
         return customerDao.getOne(id);
     }
 
@@ -31,7 +31,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer deleteCustomer(String id) {
+    public Customer deleteCustomer(long id) {
         Customer customer = customerDao.getOne(id);
         customerDao.delete(customer);
         return customer;
