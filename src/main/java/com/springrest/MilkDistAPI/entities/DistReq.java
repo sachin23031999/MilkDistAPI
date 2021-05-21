@@ -1,5 +1,9 @@
 package com.springrest.MilkDistAPI.entities;
 
+import com.springrest.MilkDistAPI.enums.DeliveryTme;
+import com.springrest.MilkDistAPI.enums.MilkType;
+import com.springrest.MilkDistAPI.enums.Unit;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,14 +17,20 @@ public class DistReq {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
     private Customer customer;
-    private String type_of_milk; // Cow/Buffalo
+
+    @Enumerated(EnumType.STRING)
+    private MilkType type_of_milk;
+
+    @Column(columnDefinition = "FLOAT")
     private String price;
-    private String unit; // Litre/kg
 
+    @Enumerated(EnumType.STRING)
+    private Unit unit; // Litre/kg
 
-    private String time_of_delivery; // morning/evening/both
+    @Enumerated(EnumType.STRING)
+    private DeliveryTme time_of_delivery;
 
-    public DistReq(Customer customer, String type_of_milk, String price, String unit, String time_of_delivery) {
+    public DistReq(Customer customer, MilkType type_of_milk, String price, Unit unit, DeliveryTme time_of_delivery) {
         this.customer = customer;
         this.type_of_milk = type_of_milk;
         this.price = price;
@@ -30,6 +40,18 @@ public class DistReq {
 
     public long getId() {
         return id;
+    }
+
+    public void setType_of_milk(MilkType type_of_milk) {
+        this.type_of_milk = type_of_milk;
+    }
+
+    public void setUnit(Unit unit) {
+        this.unit = unit;
+    }
+
+    public void setTime_of_delivery(DeliveryTme time_of_delivery) {
+        this.time_of_delivery = time_of_delivery;
     }
 
     public void setId(long id) {
@@ -49,13 +71,6 @@ public class DistReq {
         this.customer = customer;
     }
 
-    public String getType_of_milk() {
-        return type_of_milk;
-    }
-
-    public void setType_of_milk(String type_of_milk) {
-        this.type_of_milk = type_of_milk;
-    }
 
     public String getPrice() {
         return price;
@@ -65,21 +80,6 @@ public class DistReq {
         this.price = price;
     }
 
-    public String getUnit() {
-        return unit;
-    }
-
-    public void setUnit(String unit) {
-        this.unit = unit;
-    }
-
-    public String getTime_of_delivery() {
-        return time_of_delivery;
-    }
-
-    public void setTime_of_delivery(String time_of_delivery) {
-        this.time_of_delivery = time_of_delivery;
-    }
 
     @Override
     public String toString() {

@@ -7,13 +7,9 @@ import com.springrest.MilkDistAPI.Dao.DistReqDao;
 import com.springrest.MilkDistAPI.entities.DistReq;
 import com.springrest.MilkDistAPI.responses.ResponseMsg;
 import com.springrest.MilkDistAPI.services.CustomerService;
-import com.springrest.MilkDistAPI.services.CustomerServiceImpl;
 import com.springrest.MilkDistAPI.services.DistReqService;
-import com.springrest.MilkDistAPI.services.DistReqServiceImpl;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

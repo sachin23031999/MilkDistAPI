@@ -1,5 +1,8 @@
 package com.springrest.MilkDistAPI.entities;
 
+import com.springrest.MilkDistAPI.enums.CustomerType;
+import org.hibernate.annotations.CollectionId;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,7 +19,7 @@ public class Customer {
     @Column(length = 100)
     private String name;
 
-    @Column(length = 10)
+    @Column(columnDefinition = "CHAR(10)")
     private String mobile;
 
     private String address;
@@ -24,7 +27,7 @@ public class Customer {
     @Column(columnDefinition = "BOOLEAN DEFAULT false")
     private boolean is_archived;
 
-    @Column(length = 6)
+    @Column(columnDefinition = "CHAR(10)")
     private String pincode;
 
     //@OneToOne(cascade = CascadeType.ALL, mappedBy = "customer")
@@ -34,10 +37,10 @@ public class Customer {
 //	@JoinColumn(name = "dist_id")
 //	private DistReq distReq;
 
+    @Enumerated(EnumType.STRING)
+    private CustomerType type_of_customer; // Individual/Professional
 
-    private String type_of_customer; // Individual/Professional
-
-    public Customer(String user_id, String name, String mobile, String address, String pincode, String type_of_customer) {
+    public Customer(String user_id, String name, String mobile, String address, String pincode, CustomerType type_of_customer) {
         this.user_id = user_id;
         this.name = name;
         this.mobile = mobile;
@@ -45,11 +48,6 @@ public class Customer {
         this.pincode = pincode;
         this.type_of_customer = type_of_customer;
     }
-
-    public String getType_of_customer() {
-        return type_of_customer;
-    }
-
 
     public Customer() {
         super();
@@ -62,6 +60,14 @@ public class Customer {
 
     public void setUser_id(String user_id) {
         this.user_id = user_id;
+    }
+
+    public CustomerType getType_of_customer() {
+        return type_of_customer;
+    }
+
+    public void setType_of_customer(CustomerType type_of_customer) {
+        this.type_of_customer = type_of_customer;
     }
 
     public String getName() {
@@ -96,9 +102,6 @@ public class Customer {
         this.pincode = pincode;
     }
 
-    public void setType_of_customer(String type_of_customer) {
-        this.type_of_customer = type_of_customer;
-    }
 
 
     public void setIs_archived(boolean is_archived) {
