@@ -31,6 +31,19 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public void unArchiveCustomer(long customer_id) {
+        Customer customer = customerDao.getOne(customer_id);
+        customer.setIs_archived(false);
+        customerDao.save(customer);
+    }
+
+    @Override
+    public void archiveCustomer(long customer_id) {
+        Customer customer = customerDao.getOne(customer_id);
+        customer.setIs_archived(true);
+        customerDao.save(customer);
+    }
+    @Override
     public Customer deleteCustomer(long id) {
         Customer customer = customerDao.getOne(id);
         customerDao.delete(customer);
