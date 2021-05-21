@@ -1,5 +1,5 @@
 package com.springrest.MilkDistAPI.enums;
 
-public enum DeliveryTme {
+public enum DeliveryTime {
     morning, evening, both
 }

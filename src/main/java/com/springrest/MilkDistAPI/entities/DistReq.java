@@ -1,6 +1,6 @@
 package com.springrest.MilkDistAPI.entities;
 
-import com.springrest.MilkDistAPI.enums.DeliveryTme;
+import com.springrest.MilkDistAPI.enums.DeliveryTime;
 import com.springrest.MilkDistAPI.enums.MilkType;
 import com.springrest.MilkDistAPI.enums.Unit;
 
@@ -28,9 +28,9 @@ public class DistReq {
     private Unit unit; // Litre/kg
 
     @Enumerated(EnumType.STRING)
-    private DeliveryTme time_of_delivery;
+    private DeliveryTime time_of_delivery;
 
-    public DistReq(Customer customer, MilkType type_of_milk, String price, Unit unit, DeliveryTme time_of_delivery) {
+    public DistReq(Customer customer, MilkType type_of_milk, String price, Unit unit, DeliveryTime time_of_delivery) {
         this.customer = customer;
         this.type_of_milk = type_of_milk;
         this.price = price;
@@ -50,7 +50,7 @@ public class DistReq {
         this.unit = unit;
     }
 
-    public void setTime_of_delivery(DeliveryTme time_of_delivery) {
+    public void setTime_of_delivery(DeliveryTime time_of_delivery) {
         this.time_of_delivery = time_of_delivery;
     }
 
