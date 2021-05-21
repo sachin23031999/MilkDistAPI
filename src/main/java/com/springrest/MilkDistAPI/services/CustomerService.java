@@ -14,6 +14,8 @@ public interface CustomerService {
 
 	void archiveCustomer(long customer_id);
 
+	List<Customer> listOfArchivedCustomers();
+
 	public Customer deleteCustomer(long id);
 
 	void unArchiveCustomer(long customer_id);

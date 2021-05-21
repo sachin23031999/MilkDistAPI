@@ -123,6 +123,11 @@ public class Controller {
         }
     }
 
+    //List Archived Customer
+    @GetMapping("/customers/archived")
+    public List<Customer> getArchivedCustomers() {
+        return customerService.listOfArchivedCustomers();
+    }
     //Total Earning
     @GetMapping("/reports/total-earning/{start_date}/{end_date}")
     public ResponseEntity<?> totalEarning(@PathVariable String start_date, @PathVariable String end_date) {
