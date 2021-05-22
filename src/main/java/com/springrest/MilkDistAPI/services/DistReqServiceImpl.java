@@ -39,7 +39,7 @@ public class DistReqServiceImpl implements DistReqService {
     @Override
     public DistReq updateDistByID(String customerID, String distID, DistReq dist) {
 
-        List<DistReq> distFilteredByCustomerID = distReqDao.getAlldistByCustomerID(Long.parseLong(customerID));
+        //List<DistReq> distFilteredByCustomerID = distReqDao.getAlldistByCustomerID(Long.parseLong(customerID));
         Customer customer = customerDao.getOne(Long.parseLong(customerID));
         dist.setCustomer(customer);
         dist.setId(Long.parseLong(distID));
