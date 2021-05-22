@@ -68,9 +68,11 @@ public class DistReqServiceImpl implements DistReqService {
             dailyDist2.setCustomer(customer);
             dailyDist2.setTime_period(TimePeriod.evening);
             dailyDistDao.save(dailyDist2);
+
         } else if (distReq.getTime_of_delivery().equals(DeliveryTime.morning)) {
             dailyDist.setTime_period(TimePeriod.morning);
             dailyDistDao.save(dailyDist);
+
         } else if (distReq.getTime_of_delivery().equals(DeliveryTime.evening)) {
             dailyDist.setTime_period(TimePeriod.evening);
             dailyDistDao.save(dailyDist);
