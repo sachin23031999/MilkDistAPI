@@ -22,7 +22,7 @@ public class DistReq {
     private MilkType type_of_milk;
 
     @Column(columnDefinition = "FLOAT")
-    private String price;
+    private float price;
 
     @Enumerated(EnumType.STRING)
     private Unit unit; // Litre/kg
@@ -30,7 +30,7 @@ public class DistReq {
     @Enumerated(EnumType.STRING)
     private DeliveryTime time_of_delivery;
 
-    public DistReq(Customer customer, MilkType type_of_milk, String price, Unit unit, DeliveryTime time_of_delivery) {
+    public DistReq(Customer customer, MilkType type_of_milk, float price, Unit unit, DeliveryTime time_of_delivery) {
         this.customer = customer;
         this.type_of_milk = type_of_milk;
         this.price = price;
@@ -40,6 +40,18 @@ public class DistReq {
 
     public long getId() {
         return id;
+    }
+
+    public MilkType getType_of_milk() {
+        return type_of_milk;
+    }
+
+    public Unit getUnit() {
+        return unit;
+    }
+
+    public DeliveryTime getTime_of_delivery() {
+        return time_of_delivery;
     }
 
     public void setType_of_milk(MilkType type_of_milk) {
@@ -72,11 +84,11 @@ public class DistReq {
     }
 
 
-    public String getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
