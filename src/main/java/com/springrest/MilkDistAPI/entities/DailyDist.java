@@ -19,13 +19,13 @@ public class DailyDist {
 
     private float quantity;
 
-    private Date delivered_at;
+    private String delivered_at;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    public DailyDist(TimePeriod time_period, float quantity, Date delivered_at) {
+    public DailyDist(TimePeriod time_period, float quantity, String delivered_at) {
         this.time_period = time_period;
         this.quantity = quantity;
         this.delivered_at = delivered_at;
@@ -48,11 +48,11 @@ public class DailyDist {
         this.quantity = quantity;
     }
 
-    public Date getDelivered_at() {
+    public String getDelivered_at() {
         return delivered_at;
     }
 
-    public void setDelivered_at(Date delivered_at) {
+    public void setDelivered_at(String delivered_at) {
         this.delivered_at = delivered_at;
     }
 

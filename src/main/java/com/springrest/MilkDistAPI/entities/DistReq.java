@@ -18,15 +18,18 @@ public class DistReq {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private MilkType type_of_milk;
 
-    @Column(columnDefinition = "FLOAT")
+    @Column(columnDefinition = "FLOAT", nullable = false)
     private float price;
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Unit unit; // Litre/kg
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private DeliveryTime time_of_delivery;
 

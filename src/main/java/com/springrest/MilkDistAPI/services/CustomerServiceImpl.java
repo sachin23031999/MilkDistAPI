@@ -1,12 +1,10 @@
 package com.springrest.MilkDistAPI.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.springrest.MilkDistAPI.Dao.CustomerDao;
 import com.springrest.MilkDistAPI.entities.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,9 +23,9 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer updateCustomer(Customer customer) {
+    public void updateCustomer(String customer_id, Customer customer) {
+        customer.setId(Long.parseLong(customer_id));
         customerDao.save(customer);
-        return customer;
     }
 
     @Override

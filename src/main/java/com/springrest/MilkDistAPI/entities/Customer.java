@@ -13,21 +13,22 @@ public class Customer {
     @GeneratedValue
     private long id;
 
-    @Column(unique = true, length = 32)
+    @Column(unique = true, length = 32, nullable = false)
     private String user_id;
 
-    @Column(length = 100)
+    @Column(length = 100, nullable = false)
     private String name;
 
-    @Column(columnDefinition = "CHAR(10)")
+    @Column(columnDefinition = "CHAR(10)", nullable = false)
     private String mobile;
 
+    @Column(nullable = false)
     private String address;
 
     @Column(columnDefinition = "BOOLEAN DEFAULT false")
     private boolean is_archived;
 
-    @Column(columnDefinition = "CHAR(10)")
+    @Column(columnDefinition = "CHAR(10)", nullable = false)
     private String pincode;
 
     //@OneToOne(cascade = CascadeType.ALL, mappedBy = "customer")
@@ -52,6 +53,14 @@ public class Customer {
     public Customer() {
         super();
         // TODO Auto-generated constructor stub
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getUser_id() {
