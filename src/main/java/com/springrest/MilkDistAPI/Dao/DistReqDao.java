@@ -29,23 +29,41 @@ public interface DistReqDao extends JpaRepository<DistReq, Long> {
 
     //List<ReportQuery> listResultsForBuffalo(String start_date,String end_date);
 
-    @Query(value = "select SUM(quantity) from daily_distribution, distribution_required WHERE distribution_required.customer_id = daily_distribution.customer_id AND (delivered_at BETWEEN :start_date AND :end_date) AND type_of_milk = :type", nativeQuery = true)
+    @Query(value = "select SUM(quantity) from daily_distribution, distribution_required" +
+            " WHERE distribution_required.customer_id = daily_distribution.customer_id" +
+            " AND (delivered_at BETWEEN :start_date AND :end_date)" +
+            " AND type_of_milk = :type"
+            , nativeQuery = true)
     Float totalQuantityBetweenDate(@Param("start_date") String start_date,
                                    @Param("end_date") String end_date,
                                    @Param("type") String type);
 
-    @Query(value = "select SUM(price * quantity) from daily_distribution, distribution_required WHERE distribution_required.customer_id = daily_distribution.customer_id AND (delivered_at BETWEEN :start_date AND :end_date) AND type_of_milk = :type", nativeQuery = true)
+    @Query(value = "select SUM(price * quantity) from daily_distribution, distribution_required" +
+            " WHERE distribution_required.customer_id = daily_distribution.customer_id" +
+            " AND (delivered_at BETWEEN :start_date AND :end_date)" +
+            " AND type_of_milk = :type"
+            , nativeQuery = true)
     Float totalPriceBetweenDate(@Param("start_date") String start_date,
                                 @Param("end_date") String end_date,
                                 @Param("type") String type);
 
-    @Query(value = "select SUM(price * quantity) from daily_distribution, distribution_required WHERE distribution_required.customer_id = daily_distribution.customer_id AND (delivered_at BETWEEN :start_date AND :end_date) AND daily_distribution.customer_id = :customer_id AND type_of_milk = :type", nativeQuery = true)
+    @Query(value = "select SUM(price * quantity) from daily_distribution, distribution_required" +
+            " WHERE distribution_required.customer_id = daily_distribution.customer_id" +
+            " AND (delivered_at BETWEEN :start_date AND :end_date)" +
+            " AND daily_distribution.customer_id = :customer_id" +
+            " AND type_of_milk = :type"
+            , nativeQuery = true)
     Float totalEarningPerCustomer(@Param("start_date") String start_date,
                                   @Param("end_date") String end_date,
                                   @Param("customer_id") String customer_id,
                                   @Param("type") String type);
 
-    @Query(value = "select SUM(quantity) from daily_distribution, distribution_required WHERE distribution_required.customer_id = daily_distribution.customer_id AND (delivered_at BETWEEN :start_date AND :end_date) AND daily_distribution.customer_id = :customer_id AND type_of_milk = :type", nativeQuery = true)
+    @Query(value = "select SUM(quantity) from daily_distribution, distribution_required" +
+            " WHERE distribution_required.customer_id = daily_distribution.customer_id" +
+            " AND (delivered_at BETWEEN :start_date AND :end_date)" +
+            " AND daily_distribution.customer_id = :customer_id" +
+            " AND type_of_milk = :type"
+            , nativeQuery = true)
     Float totalQuantityPerCustomer(@Param("start_date") String start_date,
                                    @Param("end_date") String end_date,
                                    @Param("customer_id") String customer_id,
