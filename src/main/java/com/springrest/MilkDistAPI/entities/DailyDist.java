@@ -5,17 +5,24 @@ import org.hibernate.exception.DataException;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Random;
 
 @Entity
 @Table(name = "daily_distribution")
 public class DailyDist {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
     @Enumerated(EnumType.STRING)
     private TimePeriod time_period;
+
+//    @Transient
+//    float leftLimit = 1F;
+//    @Transient
+//    float rightLimit = 100F;
+//    private float quantity = leftLimit + new Random().nextFloat() * (rightLimit - leftLimit);
 
     private float quantity;
 
@@ -30,7 +37,9 @@ public class DailyDist {
         this.quantity = quantity;
         this.delivered_at = delivered_at;
     }
-    public DailyDist() { }
+
+    public DailyDist() {
+    }
 
     public TimePeriod getTime_period() {
         return time_period;

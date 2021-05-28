@@ -19,7 +19,8 @@ public class CowBuffalo {
         this.total_earning = total_earning;
     }
 
-    public CowBuffalo() { }
+    public CowBuffalo() {
+    }
 
     public MilkType getType_of_milk() {
         return type_of_milk;

@@ -13,6 +13,7 @@ public interface DailyDistService {
     public void updateDist(DailyDist dist);
 
     public void updateDateAndQuantity(String customer_id, String dailyDist_id, DailyDist dailyDist);
+
     public List<DailyDist> getAllDist();
 
     public DailyDist getOneDist(Long id);

@@ -56,10 +56,16 @@ public class Controller {
         }
     }
 
-    //List Customer
+    //List All Active Customer
     @GetMapping("/customers")
     public ResponseEntity<?> getAllCustomers() {
-        return new ResponseEntity(this.customerService.getAllCustomers(), HttpStatus.OK);
+        return new ResponseEntity(this.customerService.getAllActiveCustomers(), HttpStatus.OK);
+    }
+
+    //List Archived Customer
+    @GetMapping("/customers/archived")
+    public List<Customer> getArchivedCustomers() {
+        return customerService.listOfArchivedCustomers();
     }
 
     //Update Customer
@@ -68,33 +74,6 @@ public class Controller {
         try {
             this.customerService.updateCustomer(customer_id, customer);
             return new ResponseEntity(new ResponseMsg("Customer successfully updated", ""),
-                    HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity(new ResponseMsg("Something went wrong", e.getMessage()),
-                    HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    //Add Milk Distribution
-    @PostMapping(path = "customers/{customer_id}/milk", consumes = "application/json")
-    public ResponseEntity<?> addDistByCustomerID(@PathVariable String customer_id, @RequestBody DistReq distReq) {
-        try {
-            distReqService.addDistByCustomerID(customer_id, distReq);
-            return new ResponseEntity(new ResponseMsg("Milk Details Successfully added", ""),
-                    HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity(new ResponseMsg("Something went wrong", e.getMessage()),
-                    HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
-    //Update Milk Distribution
-    @PutMapping("customers/{customer_id}/milk/{dist_id}")
-    public ResponseEntity<?> updateDistByDistID(@PathVariable String customer_id, @PathVariable String dist_id, @RequestBody DistReq distReq) {
-
-        try {
-            distReqService.updateDistByID(customer_id, dist_id, distReq);
-            return new ResponseEntity(new ResponseMsg("Milk Details Successfully updated", ""),
                     HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity(new ResponseMsg("Something went wrong", e.getMessage()),
@@ -130,16 +109,37 @@ public class Controller {
         }
     }
 
-    //List Archived Customer
-    @GetMapping("/customers/archived")
-    public List<Customer> getArchivedCustomers() {
-        return customerService.listOfArchivedCustomers();
+    //Add Milk Distribution
+    @PostMapping(path = "customers/{customer_id}/milk", consumes = "application/json")
+    public ResponseEntity<?> addDistByCustomerID(@PathVariable String customer_id, @RequestBody DistReq distReq) {
+        try {
+            distReqService.addDistByCustomerID(customer_id, distReq);
+            return new ResponseEntity(new ResponseMsg("Milk Details Successfully added", ""),
+                    HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity(new ResponseMsg("Something went wrong", e.getMessage()),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    //Update Milk Distribution
+    @PutMapping("customers/{customer_id}/milk/{dist_id}")
+    public ResponseEntity<?> updateDistByDistID(@PathVariable String customer_id, @PathVariable String dist_id, @RequestBody DistReq distReq) {
+
+        try {
+            distReqService.updateDistByID(customer_id, dist_id, distReq);
+            return new ResponseEntity(new ResponseMsg("Milk Details Successfully updated", ""),
+                    HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity(new ResponseMsg("Something went wrong", e.getMessage()),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     //Update Delivery Date and Quantity
     @PatchMapping("/customers/{customer_id}/milk/{dailyDist_id}")
     public ResponseEntity<?> updateDateAndQuantity
-        (@PathVariable String customer_id, @PathVariable String dailyDist_id, @RequestBody DailyDist dailyDist) {
+    (@PathVariable String customer_id, @PathVariable String dailyDist_id, @RequestBody DailyDist dailyDist) {
 
         try {
             dailyDistService.updateDateAndQuantity(customer_id, dailyDist_id, dailyDist);

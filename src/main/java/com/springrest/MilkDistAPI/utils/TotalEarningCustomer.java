@@ -14,7 +14,9 @@ public class TotalEarningCustomer {
         this.list = list;
     }
 
-    public TotalEarningCustomer() { }
+    public TotalEarningCustomer() {
+    }
+
     public String getCustomer_id() {
         return customer_id;
     }

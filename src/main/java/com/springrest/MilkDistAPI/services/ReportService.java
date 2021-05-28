@@ -10,5 +10,6 @@ public interface ReportService {
 
 
     List<CowBuffalo> reportCowVsBuffalo(String start_date, String end_date);
+
     List<TotalEarningCustomer> reportTotalEarning(String start_date, String end_date);
 }

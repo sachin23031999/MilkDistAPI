@@ -1,16 +1,21 @@
 package com.springrest.MilkDistAPI.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.springrest.MilkDistAPI.enums.CustomerType;
 import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "customers")
 public class Customer {
 
+    @JsonIgnore
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
     @Column(unique = true, length = 32, nullable = false)
@@ -19,6 +24,7 @@ public class Customer {
     @Column(length = 100, nullable = false)
     private String name;
 
+    @Size(min = 10)
     @Column(columnDefinition = "CHAR(10)", nullable = false)
     private String mobile;
 
@@ -28,7 +34,7 @@ public class Customer {
     @Column(columnDefinition = "BOOLEAN DEFAULT false")
     private boolean is_archived;
 
-    @Column(columnDefinition = "CHAR(10)", nullable = false)
+    @Column(columnDefinition = "CHAR(6)", nullable = false)
     private String pincode;
 
     //@OneToOne(cascade = CascadeType.ALL, mappedBy = "customer")
@@ -110,7 +116,6 @@ public class Customer {
     public void setPincode(String pincode) {
         this.pincode = pincode;
     }
-
 
 
     public void setIs_archived(boolean is_archived) {

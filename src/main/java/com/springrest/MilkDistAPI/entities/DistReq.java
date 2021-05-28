@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class DistReq {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
     @OneToOne(cascade = CascadeType.ALL)

@@ -12,6 +12,7 @@
     <artifactId>MilkDistAPI</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>MilkDistAPI</name>
+
     <description>Project for Spring Boot</description>
     <properties>
         <java.version>15</java.version>
@@ -41,6 +42,13 @@
             <version>2.4.3</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.1.Final</version>
+        </dependency>
+
 
         <dependency>
             <groupId>com.h2database</groupId>
@@ -53,6 +61,14 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-maven-plugin -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -60,8 +76,33 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                    <mainClass>com.springrest.MilkDistAPI.MilkDistApiApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
+
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--            </plugin>-->
+
         </plugins>
+        <finalName>milkdist-aws-exe</finalName>
     </build>
 
+    <packaging>jar</packaging>
+
 </project>
+
+
+<!--<properties>-->
+<!--<start-class>com.springrest.MilkDistAPI.MilkDistApiApplication</start-class>-->
+<!--</properties>-->

@@ -11,4 +11,7 @@ public interface CustomerDao extends JpaRepository<Customer, Long> {
 
     @Query(value = "SELECT * FROM customers WHERE is_archived = true", nativeQuery = true)
     public List<Customer> getCustomersByIsArchive();
+
+    @Query(value = "SELECT * FROM customers WHERE is_archived = false", nativeQuery = true)
+    public List<Customer> getActiveCustomers();
 }

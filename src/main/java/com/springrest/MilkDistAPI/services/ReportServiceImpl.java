@@ -105,7 +105,7 @@ public class ReportServiceImpl implements ReportService {
                 earningCustomer.setTotal_earning(String.valueOf(buffaloEarning));
             else if (cowEarning != null && buffaloEarning == null)
                 earningCustomer.setTotal_earning(String.valueOf(cowEarning));
-            else if(cowEarning != null && buffaloEarning != null)
+            else if (cowEarning != null && buffaloEarning != null)
                 earningCustomer.setTotal_earning(String.valueOf(cowEarning + buffaloEarning));
 
             CowBuffalo cow = new CowBuffalo(MilkType.cow, String.valueOf(cowQuantity), String.valueOf(cowEarning));

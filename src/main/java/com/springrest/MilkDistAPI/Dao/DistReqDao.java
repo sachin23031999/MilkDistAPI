@@ -1,13 +1,9 @@
 package com.springrest.MilkDistAPI.Dao;
 
 import com.springrest.MilkDistAPI.entities.DistReq;
-import com.springrest.MilkDistAPI.enums.MilkType;
-import com.springrest.MilkDistAPI.utils.ReportQuery;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
-import java.util.List;
 
 public interface DistReqDao extends JpaRepository<DistReq, Long> {
 
@@ -40,8 +36,8 @@ public interface DistReqDao extends JpaRepository<DistReq, Long> {
 
     @Query(value = "select SUM(price * quantity) from daily_distribution, distribution_required WHERE distribution_required.customer_id = daily_distribution.customer_id AND (delivered_at BETWEEN :start_date AND :end_date) AND type_of_milk = :type", nativeQuery = true)
     Float totalPriceBetweenDate(@Param("start_date") String start_date,
-                                   @Param("end_date") String end_date,
-                                   @Param("type") String type);
+                                @Param("end_date") String end_date,
+                                @Param("type") String type);
 
     @Query(value = "select SUM(price * quantity) from daily_distribution, distribution_required WHERE distribution_required.customer_id = daily_distribution.customer_id AND (delivered_at BETWEEN :start_date AND :end_date) AND daily_distribution.customer_id = :customer_id AND type_of_milk = :type", nativeQuery = true)
     Float totalEarningPerCustomer(@Param("start_date") String start_date,

@@ -24,7 +24,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void updateCustomer(String customer_id, Customer customer) {
+        Customer customer1 = customerDao.getOne(Long.parseLong(customer_id));
         customer.setId(Long.parseLong(customer_id));
+        customer.setUser_id(customer1.getUser_id());
         customerDao.save(customer);
     }
 
@@ -46,6 +48,7 @@ public class CustomerServiceImpl implements CustomerService {
     public List<Customer> listOfArchivedCustomers() {
         return customerDao.getCustomersByIsArchive();
     }
+
     @Override
     public Customer deleteCustomer(long id) {
         Customer customer = customerDao.getOne(id);
@@ -55,13 +58,16 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void addCustomer(Customer customer) {
-            customerDao.save(customer);
+        customerDao.save(customer);
     }
 
     @Override
-    public List<Customer> getAllCustomers()
-    {
+    public List<Customer> getAllCustomers() {
         return customerDao.findAll();
     }
 
+    @Override
+    public List<Customer> getAllActiveCustomers() {
+        return customerDao.getActiveCustomers();
+    }
 }

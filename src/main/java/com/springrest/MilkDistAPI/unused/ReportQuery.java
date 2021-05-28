@@ -1,4 +1,4 @@
-package com.springrest.MilkDistAPI.utils;
+package com.springrest.MilkDistAPI.unused;
 
 import com.springrest.MilkDistAPI.enums.MilkType;
 import com.springrest.MilkDistAPI.enums.TimePeriod;
@@ -24,7 +24,8 @@ public class ReportQuery {
         this.time_period = timePeriod;
     }
 
-    public ReportQuery() { }
+    public ReportQuery() {
+    }
 
     public float getPrice() {
         return price;
