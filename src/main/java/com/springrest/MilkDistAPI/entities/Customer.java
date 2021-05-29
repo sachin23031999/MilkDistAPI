@@ -2,6 +2,7 @@ package com.springrest.MilkDistAPI.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.springrest.MilkDistAPI.enums.CustomerType;
+import com.springrest.MilkDistAPI.exceptionHandler.enumException.Enum;
 import org.hibernate.annotations.CollectionId;
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GeneratorType;
@@ -22,15 +23,15 @@ public class Customer {
     @Column(unique = true, length = 32, nullable = false)
     private String user_id;
 
-    @Size(min = 2, message = "Name size should be greater than 2")
+    @Size(min = 2, message = "Enter valid name")
     @Column(length = 100, nullable = false)
     private String name;
 
-    @Size(min = 10, max = 10, message = "length of mobile should be 10")
+    @Size(min = 10, max = 10, message = "Length of mobile should be 10")
     //@Column(columnDefinition = "CHAR(10)", nullable = false)
     private String mobile;
 
-    @Column(nullable = false)
+    @Size(min = 2, message = "Enter valid address")
     private String address;
 
     @Column(columnDefinition = "BOOLEAN DEFAULT false")
@@ -47,10 +48,11 @@ public class Customer {
 //	@JoinColumn(name = "dist_id")
 //	private DistReq distReq;
 
-    @Enumerated(EnumType.STRING)
-    private CustomerType type_of_customer; // Individual/Professional
+    //@Enumerated(EnumType.STRING)
+    @Enum(clazz = CustomerType.class, message = "Use (individual, professional)")
+    private String type_of_customer; // Individual/Professional
 
-    public Customer(String user_id, String name, String mobile, String address, String pincode, CustomerType type_of_customer) {
+    public Customer(String user_id, String name, String mobile, String address, String pincode, String type_of_customer) {
         this.user_id = user_id;
         this.name = name;
         this.mobile = mobile;
@@ -80,11 +82,11 @@ public class Customer {
         this.user_id = user_id;
     }
 
-    public CustomerType getType_of_customer() {
+    public String getType_of_customer() {
         return type_of_customer;
     }
 
-    public void setType_of_customer(CustomerType type_of_customer) {
+    public void setType_of_customer(String type_of_customer) {
         this.type_of_customer = type_of_customer;
     }
 
