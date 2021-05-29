@@ -7,10 +7,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.lang.reflect.Method;
 
-/**
- * @author lazycece
- * @date 2019/2/15
- */
+
 public class EnumValidator implements ConstraintValidator<Enum, Object> {
 
     private Enum annotation;
