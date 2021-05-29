@@ -1,9 +1,10 @@
-package com.springrest.MilkDistAPI.services;
+package com.springrest.MilkDistAPI.servicesImpl;
 
 import java.util.List;
 
 import com.springrest.MilkDistAPI.Dao.CustomerDao;
 import com.springrest.MilkDistAPI.entities.Customer;
+import com.springrest.MilkDistAPI.servicesInterface.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

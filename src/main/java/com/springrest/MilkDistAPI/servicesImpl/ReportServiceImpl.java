@@ -1,10 +1,11 @@
-package com.springrest.MilkDistAPI.services;
+package com.springrest.MilkDistAPI.servicesImpl;
 
 import com.springrest.MilkDistAPI.Dao.CustomerDao;
 import com.springrest.MilkDistAPI.Dao.DailyDistDao;
 import com.springrest.MilkDistAPI.Dao.DistReqDao;
 import com.springrest.MilkDistAPI.entities.Customer;
 import com.springrest.MilkDistAPI.enums.MilkType;
+import com.springrest.MilkDistAPI.servicesInterface.ReportService;
 import com.springrest.MilkDistAPI.utils.CowBuffalo;
 import com.springrest.MilkDistAPI.utils.TotalEarningCustomer;
 import org.springframework.beans.factory.annotation.Autowired;

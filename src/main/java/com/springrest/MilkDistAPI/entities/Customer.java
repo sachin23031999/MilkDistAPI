@@ -7,13 +7,14 @@ import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
+import javax.validation.Constraint;
 import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "customers")
 public class Customer {
 
-    @JsonIgnore
+   // @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
@@ -21,11 +22,12 @@ public class Customer {
     @Column(unique = true, length = 32, nullable = false)
     private String user_id;
 
+    @Size(min = 2, message = "Name size should be greater than 2")
     @Column(length = 100, nullable = false)
     private String name;
 
-    @Size(min = 10)
-    @Column(columnDefinition = "CHAR(10)", nullable = false)
+    @Size(min = 10, max = 10, message = "length of mobile should be 10")
+    //@Column(columnDefinition = "CHAR(10)", nullable = false)
     private String mobile;
 
     @Column(nullable = false)
@@ -34,6 +36,7 @@ public class Customer {
     @Column(columnDefinition = "BOOLEAN DEFAULT false")
     private boolean is_archived;
 
+    @Size(min = 6, max = 6, message = "Pincode length should be 6")
     @Column(columnDefinition = "CHAR(6)", nullable = false)
     private String pincode;
 

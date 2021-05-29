@@ -1,11 +1,9 @@
 package com.springrest.MilkDistAPI.entities;
 
 import com.springrest.MilkDistAPI.enums.TimePeriod;
-import org.hibernate.exception.DataException;
+import com.springrest.MilkDistAPI.exceptionHandler.enumException.Enum;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.Random;
 
 @Entity
 @Table(name = "daily_distribution")
@@ -15,14 +13,8 @@ public class DailyDist {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
-    @Enumerated(EnumType.STRING)
-    private TimePeriod time_period;
-
-//    @Transient
-//    float leftLimit = 1F;
-//    @Transient
-//    float rightLimit = 100F;
-//    private float quantity = leftLimit + new Random().nextFloat() * (rightLimit - leftLimit);
+    //@Enum(clazz = TimePeriod.class, message = "Enter correct time period")
+    private String time_period;
 
     private float quantity;
 
@@ -32,20 +24,28 @@ public class DailyDist {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    public DailyDist(TimePeriod time_period, float quantity, String delivered_at) {
+    public DailyDist(String time_period, float quantity, String delivered_at) {
         this.time_period = time_period;
         this.quantity = quantity;
         this.delivered_at = delivered_at;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public DailyDist() {
     }
 
-    public TimePeriod getTime_period() {
+    public String getTime_period() {
         return time_period;
     }
 
-    public void setTime_period(TimePeriod time_period) {
+    public void setTime_period(String time_period) {
         this.time_period = time_period;
     }
 

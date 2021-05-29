@@ -1,4 +1,4 @@
-package com.springrest.MilkDistAPI.services;
+package com.springrest.MilkDistAPI.servicesInterface;
 
 import java.util.List;
 

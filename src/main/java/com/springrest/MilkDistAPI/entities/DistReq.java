@@ -3,6 +3,7 @@ package com.springrest.MilkDistAPI.entities;
 import com.springrest.MilkDistAPI.enums.DeliveryTime;
 import com.springrest.MilkDistAPI.enums.MilkType;
 import com.springrest.MilkDistAPI.enums.Unit;
+import com.springrest.MilkDistAPI.exceptionHandler.enumException.Enum;
 
 import javax.persistence.*;
 
@@ -18,22 +19,22 @@ public class DistReq {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private MilkType type_of_milk;
+    @Enum(clazz = MilkType.class, message = "Error, use: (cow, buffalo)")
+   // @Enumerated(EnumType.STRING)
+    private String type_of_milk;
 
     @Column(columnDefinition = "FLOAT", nullable = false)
     private float price;
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Unit unit; // Litre/kg
+    @Enum(clazz = Unit.class, message = "Error, use: (litre,kilogram)")
+   // @Enumerated(EnumType.STRING)
+    private String unit; // Litre/kg
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private DeliveryTime time_of_delivery;
+    //@Enumerated(EnumType.STRING)
+    @Enum(clazz = DeliveryTime.class, message = "Error, use: (morning, evening, both)")
+    private String time_of_delivery;
 
-    public DistReq(Customer customer, MilkType type_of_milk, float price, Unit unit, DeliveryTime time_of_delivery) {
+    public DistReq(Customer customer, String type_of_milk, float price, String unit, String time_of_delivery) {
         this.customer = customer;
         this.type_of_milk = type_of_milk;
         this.price = price;
@@ -45,27 +46,27 @@ public class DistReq {
         return id;
     }
 
-    public MilkType getType_of_milk() {
+    public String getType_of_milk() {
         return type_of_milk;
     }
 
-    public Unit getUnit() {
+    public String getUnit() {
         return unit;
     }
 
-    public DeliveryTime getTime_of_delivery() {
+    public String getTime_of_delivery() {
         return time_of_delivery;
     }
 
-    public void setType_of_milk(MilkType type_of_milk) {
+    public void setType_of_milk(String type_of_milk) {
         this.type_of_milk = type_of_milk;
     }
 
-    public void setUnit(Unit unit) {
+    public void setUnit(String unit) {
         this.unit = unit;
     }
 
-    public void setTime_of_delivery(DeliveryTime time_of_delivery) {
+    public void setTime_of_delivery(String time_of_delivery) {
         this.time_of_delivery = time_of_delivery;
     }
 

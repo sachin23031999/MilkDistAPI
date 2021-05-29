@@ -1,4 +1,4 @@
-package com.springrest.MilkDistAPI.services;
+package com.springrest.MilkDistAPI.servicesInterface;
 
 import com.springrest.MilkDistAPI.entities.Customer;
 import com.springrest.MilkDistAPI.entities.DistReq;

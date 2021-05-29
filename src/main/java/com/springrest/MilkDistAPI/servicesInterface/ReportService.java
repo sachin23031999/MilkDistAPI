@@ -1,4 +1,4 @@
-package com.springrest.MilkDistAPI.services;
+package com.springrest.MilkDistAPI.servicesInterface;
 
 import com.springrest.MilkDistAPI.utils.CowBuffalo;
 import com.springrest.MilkDistAPI.utils.TotalEarningCustomer;

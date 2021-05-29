@@ -1,4 +1,4 @@
-package com.springrest.MilkDistAPI.services;
+package com.springrest.MilkDistAPI.servicesImpl;
 
 import com.springrest.MilkDistAPI.Dao.CustomerDao;
 import com.springrest.MilkDistAPI.Dao.DailyDistDao;
@@ -8,11 +8,10 @@ import com.springrest.MilkDistAPI.entities.DailyDist;
 import com.springrest.MilkDistAPI.entities.DistReq;
 import com.springrest.MilkDistAPI.enums.DeliveryTime;
 import com.springrest.MilkDistAPI.enums.TimePeriod;
+import com.springrest.MilkDistAPI.servicesInterface.DistReqService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
-import java.sql.Time;
 import java.util.List;
 
 @Service
@@ -59,22 +58,22 @@ public class DistReqServiceImpl implements DistReqService {
 
         DailyDist dailyDist = new DailyDist();
         dailyDist.setCustomer(customer);
-        if (distReq.getTime_of_delivery().equals(DeliveryTime.both)) {
+        if (distReq.getTime_of_delivery().equals(DeliveryTime.both.toString())) {
 
-            dailyDist.setTime_period(TimePeriod.morning);
+            dailyDist.setTime_period(TimePeriod.morning.toString());
             dailyDistDao.save(dailyDist);
 
             DailyDist dailyDist2 = new DailyDist();
             dailyDist2.setCustomer(customer);
-            dailyDist2.setTime_period(TimePeriod.evening);
+            dailyDist2.setTime_period(TimePeriod.evening.toString());
             dailyDistDao.save(dailyDist2);
 
-        } else if (distReq.getTime_of_delivery().equals(DeliveryTime.morning)) {
-            dailyDist.setTime_period(TimePeriod.morning);
+        } else if (distReq.getTime_of_delivery().equals(DeliveryTime.morning.toString())) {
+            dailyDist.setTime_period(TimePeriod.morning.toString());
             dailyDistDao.save(dailyDist);
 
-        } else if (distReq.getTime_of_delivery().equals(DeliveryTime.evening)) {
-            dailyDist.setTime_period(TimePeriod.evening);
+        } else if (distReq.getTime_of_delivery().equals(DeliveryTime.evening.toString())) {
+            dailyDist.setTime_period(TimePeriod.evening.toString());
             dailyDistDao.save(dailyDist);
         }
 
