@@ -23,7 +23,7 @@ public class EnumValidator implements ConstraintValidator<Enum, Object> {
             return false;
         }
 
-        System.out.println("Object value :" + value);
+        //System.out.println("Object value :" + value);
         Object[] objects = annotation.clazz().getEnumConstants();
 //            for(Object ob : objects) {
 //                System.out.println("Object :" + ob);
