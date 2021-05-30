@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -46,7 +47,7 @@ public class DailyDistController {
     //Patch Delivery Date and Quantity
     @PatchMapping("/customers/{customer_id}/daily/{dailyDist_id}")
     public ResponseEntity<?> updateDateAndQuantity
-    (@PathVariable String customer_id, @PathVariable String dailyDist_id, @RequestBody DailyDist dailyDist) {
+    (@PathVariable String customer_id, @PathVariable String dailyDist_id, @Valid @RequestBody DailyDist dailyDist) {
 
         try {
             dailyDistService.updateDateAndQuantity(customer_id, dailyDist_id, dailyDist);

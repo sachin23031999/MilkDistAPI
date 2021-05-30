@@ -1,14 +1,10 @@
 package com.springrest.MilkDistAPI.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.springrest.MilkDistAPI.enums.CustomerType;
 import com.springrest.MilkDistAPI.exceptionHandler.enumException.Enum;
-import org.hibernate.annotations.CollectionId;
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GeneratorType;
+import com.springrest.MilkDistAPI.exceptionHandler.customConstraint.CustomConstraint;
 
 import javax.persistence.*;
-import javax.validation.Constraint;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -20,6 +16,7 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
+    @CustomConstraint(lower = 3, upper = 32, pattern = "^[a-z0-9_.]+$", message = "Invalid user id")
     @Column(unique = true, length = 32, nullable = false)
     private String user_id;
 
@@ -27,18 +24,19 @@ public class Customer {
     @Column(length = 100, nullable = false)
     private String name;
 
-    @Size(min = 10, max = 10, message = "Length of mobile should be 10")
     //@Column(columnDefinition = "CHAR(10)", nullable = false)
+    @CustomConstraint(lower = 10, upper = 10, pattern = "[0-9]+", message = "Invalid mobile number")
     private String mobile;
 
-    @Size(min = 2, message = "Enter valid address")
+    @Size(min = 2, message = "Invalid address")
     private String address;
 
     @Column(columnDefinition = "BOOLEAN DEFAULT false")
     private boolean is_archived;
 
-    @Size(min = 6, max = 6, message = "Pincode length should be 6")
-    @Column(columnDefinition = "CHAR(6)", nullable = false)
+    //@Size(min = 6, max = 6, message = "Pincode length should be 6")
+    //@Column(columnDefinition = "CHAR(6)", nullable = false)
+    @CustomConstraint(lower = 6, upper = 6, pattern = "[0-9]+",message = "Invalid Pincode")
     private String pincode;
 
     //@OneToOne(cascade = CascadeType.ALL, mappedBy = "customer")
@@ -48,7 +46,6 @@ public class Customer {
 //	@JoinColumn(name = "dist_id")
 //	private DistReq distReq;
 
-    //@Enumerated(EnumType.STRING)
     @Enum(clazz = CustomerType.class, message = "Use (individual, professional)")
     private String type_of_customer; // Individual/Professional
 
@@ -63,7 +60,6 @@ public class Customer {
 
     public Customer() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     public long getId() {

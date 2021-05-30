@@ -1,7 +1,7 @@
 package com.springrest.MilkDistAPI.entities;
 
-import com.springrest.MilkDistAPI.enums.TimePeriod;
-import com.springrest.MilkDistAPI.exceptionHandler.enumException.Enum;
+import com.springrest.MilkDistAPI.exceptionHandler.customConstraint.CustomConstraint;
+import com.springrest.MilkDistAPI.exceptionHandler.dateConstraint.CustomDate;
 
 import javax.persistence.*;
 
@@ -18,6 +18,7 @@ public class DailyDist {
 
     private float quantity;
 
+    @CustomDate(message = "Invalid date format. Use yyyy-MM-dd")
     private String delivered_at;
 
     @OneToOne(cascade = CascadeType.ALL)

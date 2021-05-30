@@ -20,17 +20,14 @@ public class DistReq {
     private Customer customer;
 
     @Enum(clazz = MilkType.class, message = "Use (cow, buffalo)")
-   // @Enumerated(EnumType.STRING)
     private String type_of_milk;
 
     @Column(columnDefinition = "FLOAT", nullable = false)
     private float price;
 
     @Enum(clazz = Unit.class, message = "Use (litre,kilogram)")
-   // @Enumerated(EnumType.STRING)
-    private String unit; // Litre/kg
+    private String unit;
 
-    //@Enumerated(EnumType.STRING)
     @Enum(clazz = DeliveryTime.class, message = "Use (morning, evening, both)")
     private String time_of_delivery;
 

@@ -1,4 +1,4 @@
-package com.springrest.MilkDistAPI.exceptionHandler.enumException.validator;
+package com.springrest.MilkDistAPI.exceptionHandler.enumException;
 
 import com.springrest.MilkDistAPI.enums.TimePeriod;
 import com.springrest.MilkDistAPI.exceptionHandler.enumException.Enum;
@@ -35,7 +35,7 @@ public class EnumValidator implements ConstraintValidator<Enum, Object> {
 //                System.out.println(method.invoke(ob));
 //            }
             for (Object o : objects) {
-                System.out.println(o);
+                //System.out.println(o);
                 if (value.equals(method.invoke(o))) {
                     return true;
                 }

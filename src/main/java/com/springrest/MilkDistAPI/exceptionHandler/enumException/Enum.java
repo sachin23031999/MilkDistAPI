@@ -1,7 +1,5 @@
 package com.springrest.MilkDistAPI.exceptionHandler.enumException;
 
-import com.springrest.MilkDistAPI.exceptionHandler.enumException.validator.EnumValidator;
-
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.Documented;
