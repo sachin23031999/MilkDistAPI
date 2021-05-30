@@ -7,6 +7,7 @@ import com.springrest.MilkDistAPI.entities.Customer;
 import com.springrest.MilkDistAPI.servicesInterface.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -25,9 +26,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void updateCustomer(String customer_id, Customer customer) {
-        Customer customer1 = customerDao.getOne(Long.parseLong(customer_id));
+        //Customer customer1 = customerDao.getOne(Long.parseLong(customer_id));
         customer.setId(Long.parseLong(customer_id));
-        customer.setUser_id(customer1.getUser_id());
+        //customer.setUser_id(customer1.getUser_id());
         customerDao.save(customer);
     }
 

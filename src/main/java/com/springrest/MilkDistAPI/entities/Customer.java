@@ -16,7 +16,8 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
-    @CustomConstraint(lower = 3, upper = 32, pattern = "^[a-z0-9_.]+$", message = "Invalid user id")
+    @CustomConstraint(lower = 3, upper = 32, pattern = "^[a-z0-9_.]+$",
+            message = "Invalid user id, use letters, numbers, . or _")
     @Column(unique = true, length = 32, nullable = false)
     private String user_id;
 
