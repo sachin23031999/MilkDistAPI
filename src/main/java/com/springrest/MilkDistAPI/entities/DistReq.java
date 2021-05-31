@@ -3,6 +3,7 @@ package com.springrest.MilkDistAPI.entities;
 import com.springrest.MilkDistAPI.enums.DeliveryTime;
 import com.springrest.MilkDistAPI.enums.MilkType;
 import com.springrest.MilkDistAPI.enums.Unit;
+import com.springrest.MilkDistAPI.exceptionHandler.customConstraint.CustomConstraint;
 import com.springrest.MilkDistAPI.exceptionHandler.enumException.Enum;
 
 import javax.persistence.*;

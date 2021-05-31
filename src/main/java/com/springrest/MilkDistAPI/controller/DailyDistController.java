@@ -75,18 +75,18 @@ public class DailyDistController {
     }
 
 
-    //Update daily_distribution
-    @GetMapping("/daily/{daily_id}")
-    public ResponseEntity<?> updateDist
-    (@PathVariable String daily_id, @PathVariable @RequestBody DailyDist dailyDist) {
-
-        try {
-            dailyDistService.updateDist(Long.parseLong(daily_id), dailyDist);
-            return new ResponseEntity(new ResponseMsg("Data Successfully Updated", ""),
-                    HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity(new ResponseMsg("Something went wrong", e.getMessage()),
-                    HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+//    //Update daily_distribution
+//    @GetMapping("/daily/{daily_id}")
+//    public ResponseEntity<?> updateDist
+//    (@PathVariable String daily_id, @PathVariable @RequestBody DailyDist dailyDist) {
+//
+//        try {
+//            dailyDistService.updateDist(Long.parseLong(daily_id), dailyDist);
+//            return new ResponseEntity(new ResponseMsg("Data Successfully Updated", ""),
+//                    HttpStatus.OK);
+//        } catch (Exception e) {
+//            return new ResponseEntity(new ResponseMsg("Something went wrong", e.getMessage()),
+//                    HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 }

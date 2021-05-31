@@ -116,7 +116,7 @@ public class ReportServiceImpl implements ReportService {
             List<CowBuffalo> l = new ArrayList<>();
             l.add(cow);
             l.add(buffalo);
-            earningCustomer.setList(l);
+            earningCustomer.setDetails(l);
 
             list.add(earningCustomer);
         }

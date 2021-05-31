@@ -50,7 +50,7 @@ public class CustomerController {
             return new ResponseEntity(responseMsg, HttpStatus.OK);
 
         } catch (DataIntegrityViolationException e) {
-            return new ResponseEntity(new ResponseMsg("Something went wrong", e.getRootCause().getMessage() ),
+            return new ResponseEntity(new ResponseMsg("Something went wrong", e.getRootCause().getMessage()),
                     HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -75,13 +75,13 @@ public class CustomerController {
 
     //Update Customer
     @PutMapping(path = "/customers/{customer_id}", consumes = "application/json")
-    public ResponseEntity<?> updateCustomer(@PathVariable String customer_id,@Valid @RequestBody Customer customer) {
+    public ResponseEntity<?> updateCustomer(@PathVariable String customer_id, @Valid @RequestBody Customer customer) {
         try {
             this.customerService.updateCustomer(customer_id, customer);
             return new ResponseEntity(new ResponseMsg("Customer successfully updated", ""),
                     HttpStatus.OK);
         } catch (DataIntegrityViolationException e) {
-            return new ResponseEntity(new ResponseMsg("Something went wrong", e.getRootCause().getMessage() ),
+            return new ResponseEntity(new ResponseMsg("Something went wrong", e.getRootCause().getMessage()),
                     HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -95,7 +95,7 @@ public class CustomerController {
             return new ResponseEntity(new ResponseMsg("Customer Successfully Archived", ""),
                     HttpStatus.OK);
         } catch (DataIntegrityViolationException e) {
-            return new ResponseEntity(new ResponseMsg("Something went wrong", e.getRootCause().getMessage() ),
+            return new ResponseEntity(new ResponseMsg("Something went wrong", e.getRootCause().getMessage()),
                     HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -109,7 +109,7 @@ public class CustomerController {
             return new ResponseEntity(new ResponseMsg("Customer successfully marked as active", ""),
                     HttpStatus.OK);
         } catch (DataIntegrityViolationException e) {
-            return new ResponseEntity(new ResponseMsg("Something went wrong", e.getRootCause().getMessage() ),
+            return new ResponseEntity(new ResponseMsg("Something went wrong", e.getRootCause().getMessage()),
                     HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

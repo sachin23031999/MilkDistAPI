@@ -21,9 +21,9 @@ public class CustomDateValidator implements ConstraintValidator<CustomDate, Stri
     @Override
     public boolean isValid(String dateFieldValue, ConstraintValidatorContext cxt) {
 
-        if (dateFieldValue.equals(null))
-            return false;
-
+        if(dateFieldValue == null) {
+            return true;
+        }
         SimpleDateFormat dateFormat = new SimpleDateFormat(annotation.pattern());
         dateFormat.setLenient(false);
         try {

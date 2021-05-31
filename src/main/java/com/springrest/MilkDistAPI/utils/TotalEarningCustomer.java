@@ -6,12 +6,12 @@ public class TotalEarningCustomer {
 
     private String customer_id;
     private String total_earning;
-    private List<CowBuffalo> list;
+    private List<CowBuffalo> details;
 
     public TotalEarningCustomer(String customer_id, String total_earning, List<CowBuffalo> list) {
         this.customer_id = customer_id;
         this.total_earning = total_earning;
-        this.list = list;
+        this.details = list;
     }
 
     public TotalEarningCustomer() {
@@ -33,11 +33,11 @@ public class TotalEarningCustomer {
         this.total_earning = total_earning;
     }
 
-    public List<CowBuffalo> getList() {
-        return list;
+    public List<CowBuffalo> getDetails() {
+        return details;
     }
 
-    public void setList(List<CowBuffalo> list) {
-        this.list = list;
+    public void setDetails(List<CowBuffalo> details) {
+        this.details = details;
     }
 }
