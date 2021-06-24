@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface DistReqDao extends JpaRepository<DistReq, Long> {
 
 //    @Query(value = "SELECT * FROM distribution_required WHERE type_of_milk = 'cow' ORDER BY customer_id", nativeQuery = true)
@@ -28,6 +30,12 @@ public interface DistReqDao extends JpaRepository<DistReq, Long> {
 //    List<ReportQuery> listResultsForBuffalo(@Param("start_date") String start_date, @Param("end_date") String end_date);
 
     //List<ReportQuery> listResultsForBuffalo(String start_date,String end_date);
+    @Query(value = "SELECT * FROM distribution_required " +
+            "WHERE customer_id = :customer_id"
+            , nativeQuery = true)
+    List<DistReq> getMilkDetailsByCustomerID(@Param("customer_id") String customer_id);
+
+
 
     @Query(value = "select SUM(quantity) from daily_distribution, distribution_required" +
             " WHERE distribution_required.customer_id = daily_distribution.customer_id" +

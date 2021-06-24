@@ -69,4 +69,12 @@ public class DistReqController {
     public List<DistReq> getAllDist() {
         return this.distReqService.getAllDist();
     }
+
+    //Get milk details by customer_id
+    @GetMapping("/milk/customer/{customer_id}")
+    public List<DistReq> findDistByCustomerID(@PathVariable String customer_id) {
+        return this.distReqService.findMilkDetailsByCustomerID(customer_id);
+    }
+
+
 }

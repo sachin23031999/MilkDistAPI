@@ -1,6 +1,5 @@
 package com.springrest.MilkDistAPI.entities;
 
-import com.springrest.MilkDistAPI.exceptionHandler.customConstraint.CustomConstraint;
 import com.springrest.MilkDistAPI.exceptionHandler.dateConstraint.CustomDate;
 
 import javax.persistence.*;
@@ -21,14 +20,21 @@ public class DailyDist {
     @CustomDate(message = "Invalid date format. Use yyyy-MM-dd")
     private String delivered_at;
 
+    private String milk_type;
+
+    @Column(columnDefinition = "BOOLEAN DEFAULT false")
+    private Boolean is_delivered;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    public DailyDist(String time_period, float quantity, String delivered_at) {
+    public DailyDist(String time_period, float quantity, String delivered_at, String milk_type, Boolean is_delivered) {
         this.time_period = time_period;
         this.quantity = quantity;
         this.delivered_at = delivered_at;
+        this.milk_type = milk_type;
+        this.is_delivered = is_delivered;
     }
 
     public long getId() {
@@ -39,7 +45,23 @@ public class DailyDist {
         this.id = id;
     }
 
+    public Boolean getIs_delivered() {
+        return is_delivered;
+    }
+
+    public void setIs_delivered(Boolean is_delivered) {
+        this.is_delivered = is_delivered;
+    }
+
     public DailyDist() {
+    }
+
+    public String getMilk_type() {
+        return milk_type;
+    }
+
+    public void setMilk_type(String milk_type) {
+        this.milk_type = milk_type;
     }
 
     public String getTime_period() {

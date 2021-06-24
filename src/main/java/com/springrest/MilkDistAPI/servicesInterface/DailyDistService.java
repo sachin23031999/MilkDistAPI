@@ -8,15 +8,21 @@ import java.util.Map;
 
 public interface DailyDistService {
 
-    public void addDist(DailyDist dist);
+    void addDist(DailyDist dist);
 
-    public void updateDateAndQuantity(String customer_id, String dailyDist_id, DailyDist dailyDist);
+    void updateDateAndQuantity(String customer_id, String dailyDist_id, DailyDist dailyDist);
 
     void updateDist(long id, DailyDist dist);
 
-    public List<DailyDist> getAllDist();
+    List<DailyDist> getAllDist();
 
-    public DailyDist getOneDist(Long id);
+    void setDelivery(long id);
+
+    void setUndelivered(long id);
+
+    List<DailyDist> getDistByCustomerID(String customer_id);
+
+    DailyDist getOneDist(Long id);
 
     void updateQuantity(long customer_id, long dailyDist_id, DailyDist dailyDist);
 }

@@ -55,6 +55,25 @@ public class DailyDistServiceImpl implements DailyDistService {
     }
 
     @Override
+    public List<DailyDist> getDistByCustomerID(String customer_id) {
+        return this.dailyDistDao.getDistByCusID(customer_id);
+    }
+
+    @Override
+    public void setDelivery(long id) {
+        DailyDist dailyDist = dailyDistDao.getOne(id);
+        dailyDist.setIs_delivered(true);
+        dailyDistDao.save(dailyDist);
+    }
+
+    @Override
+    public void setUndelivered(long id) {
+        DailyDist dailyDist = dailyDistDao.getOne(id);
+        dailyDist.setIs_delivered(false);
+        dailyDistDao.save(dailyDist);
+    }
+
+    @Override
     public void updateQuantity(long customer_id, long dailyDist_id, DailyDist dailyD) {
 
         Customer customer = customerDao.getOne(customer_id);

@@ -74,6 +74,38 @@ public class DailyDistController {
         }
     }
 
+    @GetMapping("/daily/customer/{customer_id}")
+    public List<DailyDist> findDistReqByCustomerID(@PathVariable String customer_id) {
+        return this.dailyDistService.getDistByCustomerID(customer_id);
+    }
+
+    //Set Delivered
+    @PatchMapping("/daily/{dist_id}/delivered")
+    public ResponseEntity<?> setDelivered(@PathVariable String dist_id) {
+
+        try {
+            dailyDistService.setDelivery(Long.parseLong(dist_id));
+            return new ResponseEntity(new ResponseMsg("Order successfully delivered", ""),
+                    HttpStatus.OK);
+        } catch (DataIntegrityViolationException e) {
+            return new ResponseEntity(new ResponseMsg("Something went wrong", e.getRootCause().getMessage()),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    //Set Undelivered
+    @PatchMapping("/daily/{dist_id}/undelivered")
+    public ResponseEntity<?> setUndelivered(@PathVariable String dist_id) {
+
+        try {
+            dailyDistService.setUndelivered(Long.parseLong(dist_id));
+            return new ResponseEntity(new ResponseMsg("Order successfully undelivered", ""),
+                    HttpStatus.OK);
+        } catch (DataIntegrityViolationException e) {
+            return new ResponseEntity(new ResponseMsg("Something went wrong", e.getRootCause().getMessage()),
+                    HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 //    //Update daily_distribution
 //    @GetMapping("/daily/{daily_id}")

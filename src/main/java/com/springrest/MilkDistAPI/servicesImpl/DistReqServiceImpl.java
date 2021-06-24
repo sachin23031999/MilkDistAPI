@@ -58,6 +58,8 @@ public class DistReqServiceImpl implements DistReqService {
 
         DailyDist dailyDist = new DailyDist();
         dailyDist.setCustomer(customer);
+        dailyDist.setMilk_type(distReq.getType_of_milk());
+
         if (distReq.getTime_of_delivery().equals(DeliveryTime.both.toString())) {
 
             dailyDist.setTime_period(TimePeriod.morning.toString());
@@ -66,6 +68,7 @@ public class DistReqServiceImpl implements DistReqService {
             DailyDist dailyDist2 = new DailyDist();
             dailyDist2.setCustomer(customer);
             dailyDist2.setTime_period(TimePeriod.evening.toString());
+            dailyDist2.setMilk_type(distReq.getType_of_milk());
             dailyDistDao.save(dailyDist2);
 
         } else if (distReq.getTime_of_delivery().equals(DeliveryTime.morning.toString())) {
@@ -82,8 +85,8 @@ public class DistReqServiceImpl implements DistReqService {
     }
 
     @Override
-    public Customer findByCustomerID(String customerID) {
-        return null;
+    public List<DistReq> findMilkDetailsByCustomerID(String customer_id) {
+        return distReqDao.getMilkDetailsByCustomerID(customer_id);
     }
 
     @Override

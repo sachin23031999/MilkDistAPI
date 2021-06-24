@@ -103,7 +103,7 @@
 <!--            </plugin>-->
 
         </plugins>
-        <finalName>milkdist-aws-exe</finalName>
+        <finalName>milkdist</finalName>
     </build>
 
     <packaging>jar</packaging>

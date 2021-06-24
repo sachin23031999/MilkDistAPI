@@ -12,7 +12,7 @@ public interface DistReqService {
 
     DistReq addDist(DistReq dist);
 
-    Customer findByCustomerID(String customerID);
+    List<DistReq> findMilkDetailsByCustomerID(String customer_id);
 
     DistReq updateDistByID(String customerID, String distID, DistReq dist);
 
